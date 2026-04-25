@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Concrete and Landscapes | Concrete Christchurch</title>
+    <meta name="description" content="Advanced Concrete and Landscapes — Unlock Your Property's Potential with Advanced!. 5.0★ Google Rating.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --charcoal-dark: #0a0a0a;
+            --charcoal-light: #111827;
+            --blue-accent: #2563EB;
+            --blue-accent-hover: #1D4ED8;
+            --text-primary: #F9FAFB;
+            --text-secondary: #9CA3AF;
+            --glass-bg: rgba(23, 30, 48, 0.5);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--charcoal-dark); color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; }
+        h1,h2,h3,h4 { line-height: 1.2; font-weight: 700; }
+        h1 { font-size: 3.5rem; } h2 { font-size: 2.5rem; } h3 { font-size: 1.5rem; }
+        p { color: var(--text-secondary); margin-bottom: 1rem; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { margin-bottom: 1rem; }
+        .section-header p { max-width: 600px; margin-left: auto; margin-right: auto; }
+        .btn { display: inline-block; padding: 12px 28px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; cursor: pointer; border: none; }
+        .btn-primary { background-color: var(--blue-accent); color: white; }
+        .btn-primary:hover { background-color: var(--blue-accent-hover); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37,99,235,0.2); }
+        .btn-secondary { background-color: transparent; color: var(--text-primary); border: 1px solid var(--glass-border); }
+        .btn-secondary:hover { background-color: var(--glass-bg); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* Header */
+        .main-header { position: sticky; top: 0; width: 100%; z-index: 1000; padding: 15px 0; background: var(--glass-bg); backdrop-filter: blur(10px); border-bottom: 1px solid var(--glass-border); }
+        .main-header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--text-primary); text-decoration: none; }
+        .logo span { color: var(--blue-accent); }
+        .main-nav ul { list-style: none; display: flex; gap: 30px; }
+        .main-nav a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        .main-nav a:hover { color: var(--text-primary); }
+        .header-contact { display: flex; align-items: center; gap: 20px; }
+        .header-phone { color: var(--text-primary); text-decoration: none; font-weight: 500; }
+        .mobile-nav-toggle { display: none; background: none; border: none; cursor: pointer; }
+
+        /* Hero */
+        .hero { height: 100vh; min-height: 700px; display: flex; align-items: center; background-image: linear-gradient(rgba(10,10,10,0.6), rgba(10,10,10,0.8)), url('images/concrete-driveway.jpg'); background-size: cover; background-position: center; padding: 0; }
+        .hero-content { max-width: 800px; text-align: center; margin: 0 auto; }
+        .hero-content h1 { text-shadow: 0 4px 10px rgba(0,0,0,0.5); margin-bottom: 1rem; }
+        .hero-content .subtext { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 2rem; }
+        .star-rating { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 2.5rem; background-color: var(--glass-bg); border: 1px solid var(--glass-border); padding: 10px 20px; border-radius: 50px; }
+        .star-rating svg { fill: #FBBF24; }
+        .hero-cta { display: flex; justify-content: center; gap: 15px; }
+
+        /* About */
+        .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
+        .about-image img { width: 100%; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+
+        /* Services */
+        #services { background-color: var(--charcoal-light); }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .service-card { background-color: var(--charcoal-dark); border: 1px solid var(--glass-border); border-radius: 12px; overflow: hidden; transition: all 0.3s ease; }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+        .service-card img { width: 100%; height: 220px; object-fit: cover; transition: transform 0.3s; }
+        .service-card:hover img { transform: scale(1.05); }
+        .service-card-content { padding: 25px; }
+        .service-card h3 { margin-bottom: 10px; }
+
+        /* Gallery */
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .gallery-item { overflow: hidden; border-radius: 8px; position: relative; cursor: pointer; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s, filter 0.4s; }
+        .gallery-item:hover img { transform: scale(1.1); filter: brightness(0.8); }
+        .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+
+        /* Testimonials */
+        #testimonials { background-color: var(--charcoal-light); overflow: hidden; }
+        .testimonial-carousel { display: flex; transition: transform 0.5s ease-in-out; }
+        .testimonial-card { flex: 0 0 100%; max-width: 800px; margin: 0 auto; padding: 40px; text-align: center; background-color: var(--charcoal-dark); border: 1px solid var(--glass-border); border-radius: 12px; }
+        .testimonial-stars { margin-bottom: 1rem; }
+        .testimonial-stars svg { fill: #FBBF24; }
+        .testimonial-text { font-size: 1.1rem; font-style: italic; color: var(--text-primary); margin-bottom: 1.5rem; }
+        .testimonial-author { font-weight: 600; }
+        .carousel-dots { text-align: center; margin-top: 30px; }
+        .dot { cursor: pointer; height: 12px; width: 12px; margin: 0 5px; background-color: #4B5563; border-radius: 50%; display: inline-block; transition: background-color 0.3s; }
+        .dot.active { background-color: var(--blue-accent); }
+
+        /* Process */
+        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        .process-step { text-align: center; padding: 30px; border: 1px solid var(--glass-border); border-radius: 12px; background: var(--charcoal-light); }
+        .process-icon { width: 60px; height: 60px; background: var(--blue-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: white; font-size: 1.5rem; font-weight: 700; }
+
+        /* FAQ */
+        #faq { background-color: var(--charcoal-light); }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--glass-border); }
+        .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 20px 0; font-size: 1.1rem; font-weight: 600; color: var(--text-primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Inter', sans-serif; }
+        .faq-icon { transition: transform 0.3s; flex-shrink: 0; margin-left: 15px; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; }
+        .faq-answer p { padding-bottom: 20px; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+
+        /* CTA Banner */
+        .cta-banner { background: var(--blue-accent); border-radius: 12px; padding: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .cta-content h2 { color: white; margin-bottom: 1rem; }
+        .cta-content p { color: rgba(255,255,255,0.8); }
+        .contact-form .form-group { margin-bottom: 15px; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 12px; background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; color: white; font-family: 'Inter', sans-serif; }
+        .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.6); }
+        .contact-form textarea { min-height: 120px; resize: vertical; }
+        .contact-form .btn { width: 100%; background: white; color: var(--blue-accent); }
+        .contact-form .btn:hover { background: #f0f0f0; }
+
+        /* Footer */
+        .main-footer { background-color: var(--charcoal-light); padding: 60px 0; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .footer-col h4 { margin-bottom: 1.5rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 10px; }
+        .footer-col a, .footer-col p { color: var(--text-secondary); text-decoration: none; transition: color 0.3s; }
+        .footer-col a:hover { color: var(--text-primary); }
+        .footer-bottom { margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--glass-border); text-align: center; color: var(--text-secondary); font-size: 0.9rem; }
+
+        /* Mobile Nav */
+        .mobile-nav { display: none; position: fixed; top: 71px; left: 0; right: 0; bottom: 0; background: var(--charcoal-dark); padding: 40px; }
+        .mobile-nav.active { display: block; }
+        .mobile-nav ul { list-style: none; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .mobile-nav a { color: var(--text-primary); text-decoration: none; font-size: 1.2rem; font-weight: 500; }
+
+        /* Responsive */
+        @media (max-width: 1024px) { .main-nav, .header-contact .btn { display: none; } .mobile-nav-toggle { display: block; } .about-grid { grid-template-columns: 1fr; } .services-grid { grid-template-columns: 1fr 1fr; } .process-grid { grid-template-columns: 1fr 1fr; } .cta-banner { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { h1 { font-size: 2.5rem; } h2 { font-size: 2rem; } section { padding: 60px 0; } .hero { min-height: 600px; height: auto; padding: 120px 0; } .services-grid { grid-template-columns: 1fr; } .gallery-grid { grid-template-columns: 1fr 1fr; } .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; } .process-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 480px) { .header-phone { display: none; } .hero-cta { flex-direction: column; } .gallery-grid { grid-template-columns: 1fr; } .gallery-item:nth-child(1) { grid-column: span 1; } .cta-banner { padding: 40px 20px; } }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <a href="#home" class="logo">ACL<span>.</span></a>
+            <nav class="main-nav"><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#contact">Contact</a></li></ul></nav>
+            <div class="header-contact">
+                <a href="tel:0272615268" class="header-phone">027 261 5268</a>
+                <a href="#contact" class="btn btn-primary">Get Free Quote</a>
+            </div>
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        </div>
+    </header>
+    <nav class="mobile-nav"><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#contact">Contact</a></li></ul></nav>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content reveal">
+                    <h1>Concrete Driveways and Lawns in Christchurch</h1>
+                    <p class="subtext">Unlock Your Property's Potential with Advanced!</p>
+                    <div class="star-rating">
+                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
+                        <span>5 from 23 Google Reviews</span>
+                    </div>
+                    <div class="hero-cta">
+                        <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+                        <a href="#gallery" class="btn btn-secondary">View Our Work</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <div class="about-grid reveal">
+                    <div class="about-image"><img src="images/large-project.jpg" alt="Advanced Concrete and Landscapes project in Christchurch"></div>
+                    <div class="about-content">
+                        <h2>Your Local Christchurch Experts in Concrete</h2>
+                        <p>Your specialists in concrete driveways, lush artificial lawns, and complete landscape packages. We also offer a range of enhancement services to elevate your outdoor space. With an eye for design, we specialize in bringing your landscape and concrete visions to life.</p><p>Led by Reagan (Regan) Wagstaff, with a dedicated team including Jared and Mike, we deliver quality results on every project.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <div class="section-header reveal"><h2>Our Services</h2><p>From durable, stylish concrete solutions to complete outdoor transformations.</p></div>
+                <div class="services-grid"><div class="service-card reveal"><img src="images/concrete-driveway.jpg" alt="Concrete Driveways by Advanced Concrete and Landscapes"><div class="service-card-content"><h3>Concrete Driveways</h3><p>Exposed aggregate and plain concrete driveways for residential and commercial properties</p></div></div>
+                    <div class="service-card reveal"><img src="images/artificial-lawn.jpg" alt="Artificial Lawns by Advanced Concrete and Landscapes"><div class="service-card-content"><h3>Artificial Lawns</h3><p>Specialized installation of lush artificial grass</p></div></div>
+                    <div class="service-card reveal"><img src="images/modern-landscaping.jpg" alt="Complete Landscape Packages by Advanced Concrete and Landscapes"><div class="service-card-content"><h3>Complete Landscape Packages</h3><p>Full landscape design and construction including garden makeovers</p></div></div>
+                    <div class="service-card reveal"><img src="images/patio-path.jpg" alt="Concrete Paths & Patios by Advanced Concrete and Landscapes"><div class="service-card-content"><h3>Concrete Paths & Patios</h3><p>Walkways, patios, and outdoor entertainment areas</p></div></div>
+                    <div class="service-card reveal"><img src="images/patio-path.jpg" alt="Concrete Decks by Advanced Concrete and Landscapes"><div class="service-card-content"><h3>Concrete Decks</h3><p>Concrete deck construction</p></div></div>
+                    <div class="service-card reveal"><img src="images/large-project.jpg" alt="Paving Stones by Advanced Concrete and Landscapes"><div class="service-card-content"><h3>Paving Stones</h3><p>Paving stone installation in geometric patterns</p></div></div></div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="container">
+                <div class="section-header reveal"><h2>Project Gallery</h2><p>See the quality and craftsmanship for yourself.</p></div>
+                <div class="gallery-grid"><div class="gallery-item reveal"><img src="images/concrete-driveway.jpg" alt="Advanced Concrete and Landscapes project 1"></div>
+                    <div class="gallery-item reveal"><img src="images/artificial-lawn.jpg" alt="Advanced Concrete and Landscapes project 2"></div>
+                    <div class="gallery-item reveal"><img src="images/modern-landscaping.jpg" alt="Advanced Concrete and Landscapes project 3"></div>
+                    <div class="gallery-item reveal"><img src="images/patio-path.jpg" alt="Advanced Concrete and Landscapes project 4"></div>
+                    <div class="gallery-item reveal"><img src="images/large-project.jpg" alt="Advanced Concrete and Landscapes project 5"></div></div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <div class="container reveal">
+                <div class="section-header"><h2>What Our Clients Say</h2><p>We pride ourselves on quality work and happy customers.</p></div>
+                <div class="testimonial-carousel-wrapper">
+                    <div class="testimonial-carousel"><div class="testimonial-card"><div class="testimonial-stars"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg></div><p class="testimonial-text">"Incredible attention to detail, particularly in paving alignment and concrete finishing."</p><p class="testimonial-author">- Google Review ★★★★★</p></div>
+                        <div class="testimonial-card"><div class="testimonial-stars"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg></div><p class="testimonial-text">"Reagan and his team are professional, efficient, and great to deal with."</p><p class="testimonial-author">- Google Review ★★★★★</p></div>
+                        <div class="testimonial-card"><div class="testimonial-stars"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg></div><p class="testimonial-text">"Clear communication, turned up on time, and completed the project within the promised timeframe."</p><p class="testimonial-author">- Google Review ★★★★★</p></div>
+                        <div class="testimonial-card"><div class="testimonial-stars"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg></div><p class="testimonial-text">"Very reasonable pricing for the quality of work provided."</p><p class="testimonial-author">- Google Review ★★★★★</p></div>
+                        <div class="testimonial-card"><div class="testimonial-stars"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg></div><p class="testimonial-text">"Reagan helped fix a botched job from a previous contractor, demonstrating high integrity and expertise."</p><p class="testimonial-author">- Google Review ★★★★★</p></div>
+                        <div class="testimonial-card"><div class="testimonial-stars"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg></div><p class="testimonial-text">"Local business supporting local business. Stoked to be able to help get this concrete pad sorted for you guys."</p><p class="testimonial-author">- Facebook Review ★★★★★</p></div></div>
+                </div>
+                <div class="carousel-dots"></div>
+            </div>
+        </section>
+
+        <section id="process">
+            <div class="container">
+                <div class="section-header reveal"><h2>How We Work</h2><p>Our simple 4-step process makes your project stress-free.</p></div>
+                <div class="process-grid">
+                    <div class="process-step reveal"><div class="process-icon">1</div><h3>Consultation</h3><p>We visit your property, discuss your vision, and provide expert advice.</p></div>
+                    <div class="process-step reveal"><div class="process-icon">2</div><h3>Design & Quote</h3><p>We create a detailed plan and transparent quote with no hidden costs.</p></div>
+                    <div class="process-step reveal"><div class="process-icon">3</div><h3>Build</h3><p>Our experienced team brings your project to life with precision and care.</p></div>
+                    <div class="process-step reveal"><div class="process-icon">4</div><h3>Enjoy</h3><p>We walk you through the finished project and ensure you're 100% satisfied.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq">
+            <div class="container">
+                <div class="section-header reveal"><h2>Frequently Asked Questions</h2></div>
+                <div class="faq-container"><div class="faq-item"><button class="faq-question">How much does a concrete driveway cost in Christchurch?<svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-answer"><p>Pricing depends on size, finish type, and site conditions. We offer free on-site consultations where we measure up and provide a detailed, transparent quote with no hidden costs.</p></div></div>
+                    <div class="faq-item"><button class="faq-question">How long does a typical project take?<svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-answer"><p>Most residential projects take 3-5 days from start to finish. We always discuss timelines upfront so you know exactly what to expect.</p></div></div>
+                    <div class="faq-item"><button class="faq-question">Do you offer free quotes?<svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-answer"><p>Absolutely! Contact Reagan for a free, no-obligation consultation. We'll visit your property, discuss your vision, and provide a detailed quote.</p></div></div>
+                    <div class="faq-item"><button class="faq-question">What areas do you service?<svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-answer"><p>We service all of Christchurch and the surrounding areas. Get in touch to confirm we cover your location.</p></div></div>
+                    <div class="faq-item"><button class="faq-question">Are you licensed and insured?<svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-answer"><p>Yes, we are fully licensed and insured. We take safety and compliance seriously on every project.</p></div></div></div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="cta-banner reveal">
+                    <div class="cta-content">
+                        <h2>Ready to Transform Your Property?</h2>
+                        <p>Contact Reagan and the team for a free consultation and quote. We'll visit your property and discuss your vision.</p>
+                    </div>
+                    <form class="contact-form" onsubmit="event.preventDefault();this.innerHTML='<div style=text-align:center;padding:40px><h3 style=color:white>Thank You!</h3><p>We will be in touch within 24 hours.</p></div>'">
+                        <div class="form-group"><input type="text" placeholder="Your Name" required></div>
+                        <div class="form-group"><input type="email" placeholder="Your Email" required></div>
+                        <div class="form-group"><input type="tel" placeholder="Your Phone"></div>
+                        <div class="form-group"><textarea placeholder="Tell us about your project..."></textarea></div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><h4>Advanced Concrete and Landscapes</h4><p>Transforming Christchurch properties with premium concrete services.</p></div>
+                <div class="footer-col"><h4>Services</h4><ul><li><a href="#services">Concrete Driveways</a></li>
+                        <li><a href="#services">Artificial Lawns</a></li>
+                        <li><a href="#services">Complete Landscape Packages</a></li>
+                        <li><a href="#services">Concrete Paths & Patios</a></li>
+                        <li><a href="#services">Concrete Decks</a></li></ul></div>
+                <div class="footer-col"><h4>Contact</h4><ul><li><a href="tel:0272615268">027 261 5268</a></li><li><a href="mailto:regan@advancedcnl.co.nz">regan@advancedcnl.co.nz</a></li><li><p>241 Condell Avenue, Papanui, Christchurch, 8053</p></li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Advanced Concrete and Landscapes. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Mobile nav
+        document.querySelector('.mobile-nav-toggle').addEventListener('click', () => document.querySelector('.mobile-nav').classList.toggle('active'));
+
+        // FAQ
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                const answer = item.querySelector('.faq-answer');
+                item.classList.toggle('active');
+                answer.style.maxHeight = item.classList.contains('active') ? answer.scrollHeight + 'px' : '0';
+            });
+        });
+
+        // Testimonial carousel
+        const carousel = document.querySelector('.testimonial-carousel');
+        const cards = document.querySelectorAll('.testimonial-card');
+        const dotsContainer = document.querySelector('.carousel-dots');
+        let currentSlide = 0;
+        if (cards.length > 0) {
+            cards.forEach((_, i) => { const dot = document.createElement('span'); dot.classList.add('dot'); if (i === 0) dot.classList.add('active'); dot.addEventListener('click', () => goToSlide(i)); dotsContainer.appendChild(dot); });
+            function goToSlide(n) { currentSlide = n; carousel.style.transform = `translateX(-${n * 100}%)`; document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === n)); }
+            setInterval(() => { goToSlide((currentSlide + 1) % cards.length); }, 5000);
+        }
+    </script>
+</body>
+</html>
